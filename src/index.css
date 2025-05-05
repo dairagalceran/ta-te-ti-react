@@ -47,10 +47,10 @@ h1 {
   color: #3f3b00;
 }
 
-#game-container {
+#game-container ,#score-container{
   max-width: 45rem;
   margin: 3rem auto;
-  padding: 2rem;
+  padding: 2rem ;
   border-radius: 6px;
   background: linear-gradient(#383624, #282617);
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
@@ -81,7 +81,7 @@ h1 {
 
 #players.highlight-player li.active .player-name,
 #players.highlight-player li.active .player-symbol {
-  color: #645af6;
+  color: #b95e1d;
 }
 
 #players button {
@@ -285,6 +285,28 @@ ol {
   margin-top: 1.5rem;
 }
 
+.flash {
+  animation: flash-animation 1s infinite alternate;
+  border: 3px solid gold;
+  background-color: #fff8dc;
+  border-radius: 10px;
+}
+
+.score-table{
+  width: 94%;
+}
+
+table, th, td {
+  border: 3px solid #b5a46e; 
+  border-collapse: collapse;
+  margin: 20px;
+  padding: 20px;
+  text-align: center;
+}
+.player-table-name{
+  text-transform: capitalize;
+}
+
 @keyframes slide-in-from-left {
   0% {
     opacity: 0;
@@ -349,3 +371,16 @@ ol {
     transform: scale(1);
   }
 }
+
+/* Animación de "flash" que alterna colores */
+@keyframes flash-animation {
+  0% {
+    background-color: #fff8dc; /* color base */
+    box-shadow: 0 0 5px gold;
+  }
+  100% {
+    background-color: #ffe066; /* más intenso */
+    box-shadow: 0 0 20px gold;
+  }
+}
+
