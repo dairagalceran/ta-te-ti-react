@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 
-export default function Score( {winner, winnerPlayer, playerNames, score} ) {
+export default function Score( {winner, winnerPlayer, playerNames, score, onGameOver} ) {
 
     return (
         <>
@@ -28,7 +28,7 @@ export default function Score( {winner, winnerPlayer, playerNames, score} ) {
                 </tr>
             </tbody>
         </table>
-        <button >Reiniciar juego</button>
+        <button onClick={onGameOver}>GAME OVER</button>
 
         </>
     )

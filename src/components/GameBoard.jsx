@@ -3,8 +3,9 @@ import {isThereAWinner} from '../utils/isThereAWinner';
 import { initialGameBoard } from "../utils/initialGameBoard";
 import { isBoardFull } from "../utils/isboardFull";
 
-export default function GameBoard( {activePlayerSymbol , onSelectedSquare, winner, onSetWinner}) {
-  const [gameBoard , setGameBoard] = useState(initialGameBoard);
+export default function GameBoard( {gameBoard, setGameBoard, activePlayerSymbol , onSelectedSquare, winner, onSetWinner, onNewGame}) {
+  
+ // const [gameBoard , setGameBoard] = useState(initialGameBoard); estado proveniente del padre
 
 
   useEffect( ()  => {
@@ -60,7 +61,12 @@ export default function GameBoard( {activePlayerSymbol , onSelectedSquare, winne
         </li>
       ))}
     </ol>
-    {winner && <p>¡Ganó {winner}!</p>}
+    <button  onClick={ () => {
+      setGameBoard(initialGameBoard), // Limpia el tablero
+      onNewGame() // Limpia el estilo del ganador e inicializa el juego
+      }}>
+        New Game
+    </button>
     </>
   );
 }
@@ -68,41 +74,3 @@ export default function GameBoard( {activePlayerSymbol , onSelectedSquare, winne
 
 
 
-
-
-
-
-/** 
-
-
-export default function GameBoard({ onSelectSquare, activePlayerSymbol }) {
-  const [gameBoard, setGameBoard] = useState(initialGameBoard);
-
-  function handleSelectSquare(rowIndex, colIndex) {
-    setGameBoard((prevGameBoard) => {
-      const updatedBoard = [...prevGameBoard.map(innerArray => [...innerArray])];
-      updatedBoard[rowIndex][colIndex] = activePlayerSymbol;
-      return updatedBoard;
-    });
-
-    onSelectSquare();
-  }
-
-  return (
-    <ol id="game-board">
-      {gameBoard.map((row, rowIndex) => (
-        <li key={rowIndex}>
-          <ol>
-            {row.map((playerSymbol, colIndex) => (
-              <li key={colIndex}>
-                <button onClick={() => handleSelectSquare(rowIndex, colIndex)}>{playerSymbol}</button>
-              </li>
-            ))}
-          </ol>
-        </li>
-      ))}
-    </ol>
-  );
-
-}
-*/
