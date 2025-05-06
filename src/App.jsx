@@ -10,12 +10,14 @@ function App() {
   const [winner, setWinner] = useState(null);
   const [winnerPlayer, setWinnerPlayer] = useState(null);
   const [playerNames, setPlayerNames] = useState({ x: 'Player1' , o: 'Player2'});
-  const [score, setScore] = useState({ x: 0, o: 0, draw:3});
-  //const [gameBoard, setGameBoard] = useState(initialGameBoard);                
+  const [score, setScore] = useState({ x: 0, o: 0, draw:0});
+  const [gameBoard, setGameBoard] = useState(initialGameBoard);                
+
 
   function handleSelectedSquare(){
     setActivePlayer( (currActivePlayer) => currActivePlayer === 'x' ? 'o' : 'x');
   }
+
 
   function handleNameChange(symbol, newName){
     setPlayerNames( (prev) =>  {
@@ -26,6 +28,24 @@ function App() {
       }
         
     });
+  }
+
+
+  function handleNewGame(){
+    if(winner === 'draw'){
+      setActivePlayer('x');
+    } else{
+      setActivePlayer(winner);
+    }   
+    setWinner(null);
+  }
+
+
+  function handleGameOver(){
+    setWinner(null);
+    setActivePlayer('x');
+    setScore({ x: 0, o: 0, draw:0});
+    setGameBoard(initialGameBoard);
   }
 
   useEffect( () => {
@@ -59,18 +79,22 @@ function App() {
                   onNameChange={handleNameChange} />
         </ol>
         <GameBoard 
+          gameBoard={gameBoard}
+          setGameBoard={setGameBoard}
           onSelectedSquare={handleSelectedSquare} 
           activePlayerSymbol={activePlayer} 
           winner={winner}
           onSetWinner={setWinner}
-        />
+          onNewGame={handleNewGame} />
       </div>
+
       <div id='score-container'>
         <Score 
           winner={winner} 
           winnerPlayer={winnerPlayer}
           playerNames={playerNames}
           score={score}
+          onGameOver={handleGameOver}
         />
       </div> 
       
