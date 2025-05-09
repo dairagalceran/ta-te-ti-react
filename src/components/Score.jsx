@@ -28,7 +28,9 @@ export default function Score( {winner, winnerPlayer, playerNames, score, onGame
                 </tr>
             </tbody>
         </table>
-        <button onClick={onGameOver}>GAME OVER</button>
+        <div className='div-buttons'>
+            <button className="btn-game" onClick={onGameOver}>GAME OVER</button>
+        </div>
 
         </>
     )
