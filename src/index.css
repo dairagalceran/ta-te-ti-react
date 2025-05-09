@@ -292,7 +292,22 @@ ol {
   border-radius: 10px;
 }
 
-.score-table{
+.div-buttons{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-game{
+  padding: 10px;
+  font-size: larger;
+  font-weight: bolder;
+  color: coral;
+}
+
+.score-table, 
+.historical-table {
   width: 94%;
 }
 
@@ -303,8 +318,14 @@ table, th, td {
   padding: 20px;
   text-align: center;
 }
+
 .player-table-name{
   text-transform: capitalize;
+}
+
+.historical-table-body  {
+  background-color: #e1dec7;
+  color: #46432f;
 }
 
 @keyframes slide-in-from-left {

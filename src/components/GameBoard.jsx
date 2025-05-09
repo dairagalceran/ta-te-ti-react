@@ -3,6 +3,7 @@ import {isThereAWinner} from '../utils/isThereAWinner';
 import { initialGameBoard } from "../utils/initialGameBoard";
 import { isBoardFull } from "../utils/isboardFull";
 
+
 export default function GameBoard( {gameBoard, setGameBoard, activePlayerSymbol , onSelectedSquare, winner, onSetWinner, onNewGame}) {
   
  // const [gameBoard , setGameBoard] = useState(initialGameBoard); estado proveniente del padre
@@ -61,12 +62,16 @@ export default function GameBoard( {gameBoard, setGameBoard, activePlayerSymbol 
         </li>
       ))}
     </ol>
-    <button  onClick={ () => {
-      setGameBoard(initialGameBoard), // Limpia el tablero
-      onNewGame() // Limpia el estilo del ganador e inicializa el juego
-      }}>
-        New Game
-    </button>
+    <div className="div-buttons">
+      <button className="btn-game"
+        onClick={ () => {
+        setGameBoard(initialGameBoard), // Limpia el tablero
+        onNewGame() // Limpia el estilo del ganador e inicializa el juego
+        }}>
+          NEW GAME      
+      </button>
+    </div>
+    
     </>
   );
 }

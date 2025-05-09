@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
 import React from 'react';
 
-export default function Player( {initialName, symbol, isActive, isWinner, onWinnerName, onNameChange } ) {
+export default function Player( { playerName, symbol, isActive, isWinner, onWinnerName, onNameChange } ) {
   
-  const [playerName , setPlayerName] = useState(initialName);
   const [isEditing , setIsEditing] = useState(false);
 
   let editablePlayerName = <span className='player-name'>{playerName}</span>
@@ -20,7 +19,7 @@ export default function Player( {initialName, symbol, isActive, isWinner, onWinn
 
   //función para cambiar el estado 
   function handleChange(e){
-    setPlayerName(e.target.value);
+    onNameChange(symbol , e.target.value ); // actualizar directamente al padre 
   }
 
   if(isEditing){
